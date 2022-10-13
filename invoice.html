@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokokaos</title>
+    <link rel="stylesheet" href="invoice.css">
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn"></label>
+        <label class="logo">Tokokaos</label>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="invoice.html">Bayar</a></li>
+            <li><a class="active" href="login.html">Bobby Rahdyan</a></li>
+        </ul>
+    </nav>
+    <div class="invoice" style="margin-bottom: 250px;">
+        <div class="title">
+            <h2>INVOICE 001</h2>
+        </div>
+
+        <div class="boxpelanggan">
+            <pre>
+          Nama                      : Bobby Rahdyan
+          Alamat                    : Jln. Kasturi gg kaswari no 10, RT 001/RW 002, Jakarta Selatan
+          no tlp                    : 08111945586
+          tanggal pemesanan         : 13/10/2022
+            </pre>
+        </div>
+        <br>
+        <table class="table">
+            <br>
+            <head>
+                <th>Product</th>
+                <th>pcs</th>
+                <th>Harga</th>
+                <th>total harga</th>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td>Rp 500.000</td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>Kaos polos Hitam</td>
+                        <td>10</td>
+                        <td>25000</td>
+                        <td>Rp 250.000</td>
+                    </tr>
+
+                    <tr>
+                        <td>Kaos polos Putih</td>
+                        <td>10</td>
+                        <td>25000</td>
+                        <td>Rp 250.000</td>
+                    </tr>
+                </tbody>
+        </table>
+        <div>
+            <div class="note">
+                <p>note : barang akan dikirim setelah pembayaran diselesaikan</p>
+            </div>
+            <div class="totalpembayaran">
+                <pre class="totalharga">
+    total  harga        : Rp 500.000
+    ppn10%              : <u>Rp  50.000</u>
+    total pembayaran    : Rp 550.000
+                </pre>
+            </div>
+        </div>
+</body>
+</html>
