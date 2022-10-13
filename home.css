@@ -13,17 +13,18 @@ body {
 }
 
 nav {
-    background: #0082e6;
+    background: #dec2ba;
     height: 80px;
     width: 100%;
 }
 
-label.logo {
+img.logo {
     color: white;
     font-size: 35px;
     line-height: 80px;
     padding: 0 100px;
     font-weight: bold;
+    height: 80px;
 }
 
 nav ul {
@@ -47,7 +48,7 @@ nav ul li a {
 
 a.active,
 a:hover {
-    background: #1b9bff;
+    background: #dec2ba;
     transition: .5s;
 }
 
@@ -93,7 +94,7 @@ input[type=text] {
 }
 
 input[type=submit] {
-    background: #36a6fb;
+    background: #dec2ba;
     position: relative;
     border-radius: 0 25px 25px 0;
     width: 15%;
@@ -114,7 +115,7 @@ input[type=submit] {
 
 .underline {
     margin: 0 auto;
-    background-color: #0082e6;
+    background-color: #dec2ba;
     width: 25%;
     height: 2px;
 }
@@ -164,7 +165,7 @@ div.product-desc {
 }
 
 button.product-add {
-    background: #0082e6;
+    background: #dec2ba;
     color: #fff;
     border: none;
     width: 100%;
@@ -176,7 +177,7 @@ button.product-add {
 }
 
 button.product-add:hover {
-    background: #1b9bff;
+    background: #dbd0cd;
 }
 
 .footer {
@@ -184,7 +185,7 @@ button.product-add:hover {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #0082e6;
+    background-color: #dec2ba;
     color: white;
     display: inline;
     float: left;

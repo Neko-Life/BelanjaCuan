@@ -1,0 +1,122 @@
+[
+    {
+        'nama': 'Baju Premium Hitam All Star',
+        'harga': 90000,
+        'namagambar': 'hitamAllstar.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam BAPE',
+        'harga': 110000,
+        'namagambar': 'hitamBape.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam GAP',
+        'harga': 100000,
+        'namagambar': 'hitamGAP.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam Jordan',
+        'harga': 90000,
+        'namagambar': 'hitamJordan.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam Kenzo',
+        'harga': 110000,
+        'namagambar': 'hitamKenzo.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam Micky',
+        'harga': 100000,
+        'namagambar': 'hitamMicky.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam NASA',
+        'harga': 90000,
+        'namagambar': 'hitamNasa.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam Off White',
+        'harga': 110000,
+        'namagambar': 'hitamOffWhite.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam Simpsons',
+        'harga': 90000,
+        'namagambar': 'hitamSimpsons.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam Skull',
+        'harga': 100000,
+        'namagambar': 'hitamSkull.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Hitam Uniqlo',
+        'harga': 100000,
+        'namagambar': 'hitamUniqlo.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih 199X',
+        'harga': 90000,
+        'namagambar': 'putih199X.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih AAPE',
+        'harga': 90000,
+        'namagambar': 'putihAAPE.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih Macan',
+        'harga': 110000,
+        'namagambar': 'putihMacan.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih Off White',
+        'harga': 100000,
+        'namagambar': 'putihOffWhite.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih Smile',
+        'harga': 100000,
+        'namagambar': 'putihSmile.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih Tokyo',
+        'harga': 110000,
+        'namagambar': 'putihTokyo.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih Uniqlo',
+        'harga': 100000,
+        'namagambar': 'putihUniqlo.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih Unknown',
+        'harga': 90000,
+        'namagambar': 'putihUnknown.JPG',
+        'stock': 20
+    },
+    {
+        'nama': 'Baju Premium Putih Wave',
+        'harga': 90000,
+        'namagambar': 'putihWave.JPG',
+        'stock': 20
+    }
+]
