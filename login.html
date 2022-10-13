@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokokaos</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- navbar -->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn"></label>
+        <label class="logo">Tokokaos</label>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a class="active" href="login.html">Masuk</a></li>
+          </ul>
+    </nav>
+    <!-- end of navbar -->
+
+    <div class="login-box">
+        <h1>LOGIN</h1>
+        <form action="after_login.html">
+          <label for="username">Username</label>
+          <input type="text" style="border-radius: 20px;" placeholder="Masukkan username" required autocomplete="off">
+          <label for="password">Password</label>
+          <input type="password" style="border-radius: 20px;" placeholder="Masukkan password" required autocomplete="off">
+          <input type="submit" style="border-radius: 20px;" value="Log In">
+          <br>
+          <a href="#">Lupa Password?</a><br>
+          <a href="#">Sign Up</a>
+        </form>
+      </div>
+</body>
+</html>
