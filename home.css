@@ -164,8 +164,8 @@ div.product-desc {
     padding: 10px 0 10px 0;
 }
 
+button.product-buy,
 button.product-add {
-    background: #dec2ba;
     color: #fff;
     border: none;
     width: 100%;
@@ -176,7 +176,19 @@ button.product-add {
     border-radius: 3px;
 }
 
+button.product-add {
+    background: #1bcb00;
+}
+
 button.product-add:hover {
+    background: #51ff36;
+}
+
+button.product-buy {
+    background: #dec2ba;
+}
+
+button.product-buy:hover {
     background: #dbd0cd;
 }
 
