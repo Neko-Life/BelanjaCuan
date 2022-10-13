@@ -17,18 +17,19 @@
 }
 
 nav {
-    background: #0082e6;
+    background: #dec2ba;
     height: 80px;
     width: 100%;
 
 }
 
-label.logo {
+img.logo {
     color: white;
     font-size: 35px;
     line-height: 80px;
     padding: 0 100px;
     font-weight: bold;
+    height: 80px;
 }
 
 nav ul {
@@ -52,7 +53,7 @@ nav ul li a {
 
 a.active,
 a:hover {
-    background: #1b9bff;
+    background: #dbd0cd;
     transition: .5s;
 }
 
