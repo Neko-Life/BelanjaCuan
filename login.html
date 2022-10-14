@@ -15,26 +15,30 @@
   <nav>
     <input type="checkbox" id="check">
     <label for="check" class="checkbtn"></label>
-    <img class="logo" src="gambarBaju/logo3.PNG" alt='BelanjaCuan'></img>
+    <img class="logo" src="gambarBaju/logo3.PNG" alt='BelanjaCuan'>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a class="active" href="login.html">Log In</a></li>
+      <li><a id="home-nav-button">Home</a></li>
+      <li><a class="active" id="login-nav-button">Login</a></li>
     </ul>
   </nav>
   <!-- end of navbar -->
 
   <div class="login-box">
     <h1>LOGIN or SIGN UP</h1>
-    <form action="after_login.html">
+    <!-- action="after_login.html" -->
+    <form action="javascript:void(0)">
       <label for="username">Username</label>
-      <input type="text" style="border-radius: 20px;" placeholder="Masukkan username" required autocomplete="off">
+      <input pattern="[a-zA-Z0-9 _-]+" id="username-input" type="text" style="border-radius: 20px;"
+        placeholder="Masukkan username" required="true" autocomplete="off">
       <label for="password">Password</label>
-      <input type="password" style="border-radius: 20px;" placeholder="Masukkan password" required autocomplete="off">
-      <input type="submit" style="border-radius: 20px;" value="Log In">
+      <input pattern="[a-zA-Z0-9 _-]+" id="password-input" type="password" style="border-radius: 20px;"
+        placeholder="Masukkan password" required="true" autocomplete="off">
+      <input id="login-button" type="submit" style="border-radius: 20px;" value="Log In">
       <br>
-      <input type="submit" style="border-radius: 20px;" value="Sign Up">
+      <input id="signup-button" type="submit" style="border-radius: 20px;" value="Sign Up">
     </form>
   </div>
+  <script src="index.js" type="text/javascript"></script>
 </body>
 
 </html>

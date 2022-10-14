@@ -15,26 +15,27 @@
         <label for="check" class="checkbtn"></label>
         <img class="logo" src="gambarBaju/logo3.PNG" alt='BelanjaCuan'></img>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="invoice.html">Pay</a></li>
-            <li><a class="active" href="login.html">Bobby Rahdyan</a></li>
+            <li><a id="beranda-nav-button">Home</a></li>
+            <li><a id="invoice-nav-button">Pay</a></li>
+            <li><a class="active" id="login-nav-button">Login</a></li>
         </ul>
     </nav>
     <div class="invoice" style="margin-bottom: 250px;">
         <div class="title">
-            <h2>INVOICE 001</h2>
+            <h2>INVOICE</h2>
         </div>
 
         <div class="boxpelanggan">
-            <pre>
+            <pre id="user-creds"><!-- 
           Nama                      : Bobby Rahdyan
           Alamat                    : Jln. Kasturi gg kaswari no 10, RT 001/RW 002, Jakarta Selatan
           no tlp                    : 08111945586
           tanggal pemesanan         : 13/10/2022
+        -->
             </pre>
         </div>
         <br>
-        <table class="table">
+        <table class="table" id="invoice-table-cart">
             <br>
 
             <head>
@@ -66,10 +67,10 @@
         </table>
         <div>
             <div class="note">
-                <p>note : barang akan dikirim setelah pembayaran diselesaikan</p>
+                <p>Note : Barang akan dikirim setelah pembayaran diselesaikan</p>
             </div>
             <div class="totalpembayaran">
-                <pre class="totalharga">
+                <pre class="totalharga" id="invoice-total-price">
     total  harga        : Rp 500.000
     ppn10%              : <u>Rp  50.000</u>
     total pembayaran    : Rp 550.000
