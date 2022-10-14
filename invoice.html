@@ -37,33 +37,31 @@
         <br>
         <table class="table" id="invoice-table-cart">
             <br>
+            <th>Product</th>
+            <th>pcs</th>
+            <th>Harga</th>
+            <th>total harga</th>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>Rp 500.000</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>Kaos polos Hitam</td>
+                    <td>10</td>
+                    <td>25000</td>
+                    <td>Rp 250.000</td>
+                </tr>
 
-            <head>
-                <th>Product</th>
-                <th>pcs</th>
-                <th>Harga</th>
-                <th>total harga</th>
-                <tfoot>
-                    <tr>
-                        <td colspan="3">Total</td>
-                        <td>Rp 500.000</td>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <tr>
-                        <td>Kaos polos Hitam</td>
-                        <td>10</td>
-                        <td>25000</td>
-                        <td>Rp 250.000</td>
-                    </tr>
-
-                    <tr>
-                        <td>Kaos polos Putih</td>
-                        <td>10</td>
-                        <td>25000</td>
-                        <td>Rp 250.000</td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <td>Kaos polos Putih</td>
+                    <td>10</td>
+                    <td>25000</td>
+                    <td>Rp 250.000</td>
+                </tr>
+            </tbody>
         </table>
         <div>
             <div class="note">
@@ -76,6 +74,9 @@
     total pembayaran    : Rp 550.000
                 </pre>
             </div>
+        </div>
+        <div class="button-pay-cart">
+            <button id="button-pay-cart">Bayar Rp. <span id="span-all-total-price"></span></button>
         </div>
         <script src="index.js" type="text/javascript"></script>
 </body>

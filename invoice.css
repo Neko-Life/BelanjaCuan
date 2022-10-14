@@ -114,3 +114,16 @@ tbody {
     position: relative;
     right: 80px;
 }
+
+/* HELP!! INI GIMANA NENGAHINNYA?? */
+#button-pay-cart {
+    background-color: rgb(94, 255, 94);
+    padding: 50px 120px;
+    border-radius: 10px;
+    border: 10px solid honeydew;
+}
+
+.button-pay-cart {
+    display: flex;
+    align-items: center;
+}

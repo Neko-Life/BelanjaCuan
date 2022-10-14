@@ -398,7 +398,40 @@ const setInvoiceUserCreds = (element) => {
     element.innerHTML = `
     Nama                      : ${user.username}
     Password                  : ${user.password}
-    `
+    `;
+}
+
+const setInvoiceTable = () => {
+    const table = document.getElementById("");
+
+    if (table) {
+
+        // <th>Product</th>
+        // <th>pcs</th>
+        // <th>Harga</th>
+        // <th>total harga</th>
+        // <tfoot>
+        //     <tr>
+        //         <td colspan="3">Total</td>
+        //         <td>Rp 500.000</td>
+        //     </tr>
+        // </tfoot>
+        // <tbody>
+        //     <tr>
+        //         <td>Kaos polos Hitam</td>
+        //         <td>10</td>
+        //         <td>25000</td>
+        //         <td>Rp 250.000</td>
+        //     </tr>
+
+        //     <tr>
+        //         <td>Kaos polos Putih</td>
+        //         <td>10</td>
+        //         <td>25000</td>
+        //         <td>Rp 250.000</td>
+        //     </tr>
+        // </tbody>
+    }
 }
 
 const showProducts = (productsToShow) => {
