@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" href="gambarBaju/logo3.PNG">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belanja Cuan</title>
     <link rel="stylesheet" href="invoice.css">
@@ -13,11 +14,13 @@
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn"></label>
-        <img class="logo" src="gambarBaju/logo3.PNG" alt='BelanjaCuan'></img>
+        <a class="no-trans" id="a-logo" href="javascript:void(0)">
+            <img class="logo" src="gambarBaju/logo3.PNG" alt='BelanjaCuan'>
+        </a>
         <ul>
-            <li><a id="beranda-nav-button">Home</a></li>
-            <li><a id="invoice-nav-button">Pay</a></li>
-            <li><a id="login-nav-button">Login</a></li>
+            <li><a href="javascript:void(0)" id="beranda-nav-button">Home</a></li>
+            <li><a href="javascript:void(0)" id="invoice-nav-button">Pay</a></li>
+            <li><a href="javascript:void(0)" id="login-nav-button">Login</a></li>
         </ul>
     </nav>
     <div class="invoice" style="margin-bottom: 250px;">
@@ -37,12 +40,10 @@
         <br>
         <table class="table" id="invoice-table-cart">
             <br>
-            <th></th>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Harga</th>
-            <th>Total Harga</th>
-            <th></th>
+            <td class="fy" colspan="2"><strong>Product</strong></td>
+            <td class="fy text-align-right"><strong>Jumlah</strong></td>
+            <td class="fy text-align-right"><strong>Harga</strong></td>
+            <td class="fy" colspan="2"><strong>Total Harga</strong></td>
             <!-- <tfoot>
                 <tr>
                     <td id="td-total-price" colspan="3">Total</td>
@@ -50,14 +51,14 @@
                 </tr>
             </tfoot> -->
             <tbody id="invoice-table-body">
-                <td class="text-align-left"><img src="gambarBaju/hitamAllstar.JPG" style="height: 50px;"></td>
+                <!-- <td class="text-align-left"><img src="gambarBaju/hitamAllstar.JPG" style="height: 50px;"></td>
                 <td class="text-align-left">${data.nama}</td>
-                <td class="text-align-right" id=""><input type="number" value="${data.qty}"/></td>
+                <td class="text-align-right" id=""><input type="number" value="${data.qty}" /></td>
                 <td class="text-align-right">${stringifyHarga(data.harga)}</td>
                 <td class="text-align-right">Rp. ${stringifyHarga(currentTotal)}</td>
                 <td>
                     <input type="button" value="🗑️">
-                </td>
+                </td> -->
                 <!-- <tr>
                     <td>test</td>
                 </tr> -->
@@ -82,14 +83,15 @@
             </div>
             <div class="totalpembayaran">
                 <pre class="totalharga" id="invoice-total-price">
-    Total Harga         : Rp. <span id="invoice-total-price-total-price">-</span>
-    PPN10%              : Rp. <span id="invoice-total-price-ppn">-</span>
-    Total Pembayaran    : Rp. <span id="invoice-total-price-total-pay">-</span>
+    Total Harga         : Rp. <span id="invoice-total-price-total-price">0</span>
+    PPN10%              : Rp. <span id="invoice-total-price-ppn">0</span>
+    Total Pembayaran    : Rp. <span id="invoice-total-price-total-pay">0</span>
                 </pre>
             </div>
         </div>
         <div class="button-pay-cart">
-            <button id="button-pay-cart" style="border-radius: 20px;">Bayar Rp. <span id="span-all-total-price">0</span></button>
+            <button type="submit" id="button-pay-cart" style="border-radius: 20px;">Bayar Rp. <span
+                    id="span-all-total-price">0</span></button>
         </div>
         <script src="index.js" type="text/javascript"></script>
 </body>

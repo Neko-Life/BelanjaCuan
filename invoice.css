@@ -52,7 +52,7 @@ nav ul li a {
 }
 
 a.active,
-a:hover {
+a:hover:not(.no-trans) {
     background: #492d10cc;
     transition: .5s;
 }
@@ -117,7 +117,7 @@ tbody {
 
 /* HELP!! INI GIMANA NENGAHINNYA?? */
 #button-pay-cart {
-    background-color: #dec2ba;
+    background: #dec2ba;
     padding: 25px 50px;
     /* border-radius: 10px;
     border: 10px solid honeydew; */
@@ -128,12 +128,38 @@ tbody {
     display: flex;
     align-items: center;
     float: right;
+    margin-right: 20px;
 }
 
-/* .text-align-right {
+#button-pay-cart:hover {
+    background: #492d10cc;
+    transition: .5s;
+}
+
+.text-align-right {
     text-align: right;
 }
 
 .text-align-left {
     text-align: left;
-} */
+}
+
+.fz {
+    font-size: 20px;
+}
+
+.fy {
+    font-size: 24px;
+}
+
+.rm-button {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    background: #dec2ba;
+}
+
+.rm-button:hover {
+    background: #492d10cc;
+    transition: .5s;
+}

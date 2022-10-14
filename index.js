@@ -194,6 +194,20 @@ const setCurrentUser = (user) => {
     return currentUser;
 }
 
+const randomOutOfStockLine = () => {
+    const alerts = [
+        "belum ada",
+        "sudah habis",
+        "sudah diborong bang toyib",
+        "kurang stok",
+        "sudah anda borong",
+        "tidak ada",
+        "habis dimakan anak anda"
+    ];
+
+    return alerts[Math.floor(Math.random() * alerts.length)];
+}
+
 /**
  * 
  * @param {URL} url 
@@ -324,7 +338,7 @@ const createProductCard = ({ nama, harga, namagambar, stock } = {}) => {
         <div class="product-price">Rp. ${hargaStr}</div>
         <div class="product-desc" id="product-desc-${nama}">Stok: ${stock}</div>
         <button class="product-add" id="product-add-${nama}">+ Tambah ke keranjang</button>
-        <button class="product-buy" >Beli</button>
+        <button class="product-buy" id="product-buy-${nama}">Beli</button>
     </div>`;
 }
 
@@ -405,6 +419,11 @@ const setInvoiceUserCreds = (element) => {
     `;
 }
 
+const removeCartItem = (item) => {
+    delete cart[item];
+    setInvoiceTable();
+}
+
 const setInvoiceTable = () => {
     const listItems = document.getElementById("invoice-table-body");
     const spanTotalPrice = document.getElementById("invoice-total-price-total-price");
@@ -413,30 +432,58 @@ const setInvoiceTable = () => {
     const elementPay = document.getElementById("span-all-total-price");
 
     if (listItems) {
+        listItems.innerHTML = "";
         let total = 0;
 
         for (const key in cart) {
             const data = cart[key];
 
             const tr = document.createElement("tr");
-            // <td>Kaos polos Hitam</td>
-            // <td>10</td>
-            // <td>25000</td>
-            // <td>Rp 250.000</td>
+            tr.setAttribute("id", `list-item-${data.nama}`);
+            // <td class="text-align-left"><img src="gambarBaju/hitamAllstar.JPG" style="height: 50px;"></td>
+            // <td class="text-align-left">${data.nama}</td>
+            // <td class="text-align-right" id="qty-input"><input type="number" value="${data.qty}" /></td>
+            // <td class="text-align-right">${stringifyHarga(data.harga)}</td>
+            // <td class="text-align-right">Rp. ${stringifyHarga(currentTotal)}</td>
+            // <td>
+            //     <input type="button" value="🗑️">
+            // </td>
             const currentTotal = data.harga * data.qty;
-            tr.innerHTML = `<td class="text-align-left">${data.nama}</td>
-                        <td class="text-align-right" id="">${data.qty}</td>
-                        <td class="text-align-right">${stringifyHarga(data.harga)}</td>
-                        <td class="text-align-right">Rp. ${stringifyHarga(currentTotal)}</td>`;
+            tr.innerHTML = `
+                        <td class="fz text-align-left">
+                            <img src="gambarBaju/${data.namagambar}" style="height: 50px;">
+                        </td>
+                        <td class="fz text-align-left">${data.nama}</td>
+                        <td class="text-align-right" id="qty-input">
+                            <input type="number" min="1" max="${data.stock}" id="input-qty-${data.nama}" value="${data.qty}" />
+                        </td>
+                        <td class="fz text-align-right">Rp. ${stringifyHarga(data.harga)}</td>
+                        <td class="fz text-align-right">Rp. ${stringifyHarga(currentTotal)}</td>
+                        <td>
+                            <input class="rm-button" type="button" id="rm-${data.nama}" value="🗑️">
+                        </td>
+            `;
             listItems.appendChild(tr);
             total += currentTotal;
+
+            const inputQtyHandler = (event) => {
+                cart[data.nama].qty = event.target.value;
+            };
+
+            const elementInputQty = document.getElementById(`input-qty-${data.nama}`);
+
+            elementInputQty.addEventListener("change", inputQtyHandler);
+
+            document.getElementById(`rm-${data.nama}`).addEventListener("click", () => {
+                removeCartItem(data.nama);
+            });
         }
 
         const ppn = total * 0.1;
-        const totalPay = total + ppn;
+        const totalPay = stringifyHarga(total + ppn);
         spanTotalPrice.innerText = stringifyHarga(total);
         elementPpn.innerText = stringifyHarga(ppn);
-        elementTotalPay.innerText = stringifyHarga(totalPay);
+        elementTotalPay.innerText = totalPay;
         elementPay.innerText = totalPay;
     }
 }
@@ -467,39 +514,72 @@ const showProducts = (productsToShow) => {
     }
 }
 
+const addToCart = (productData) => {
+    const productName = productData.nama;
+
+    if (!cart[productName]) {
+        cart[productName] = { ...productData, qty: 0 };
+    }
+
+    cart[productName].qty++;
+    const sisaStock = productData.stock - cart[productName].qty;
+
+    if (sisaStock < 0) {
+        cart[productName].qty--;
+        return -1;
+    }
+
+    return sisaStock;
+}
+
 const loadProductsListener = (productsToListen) => {
     for (const data of productsToListen) {
-        const element = document.getElementById(`product-add-${data.nama}`);
-        if (element) element.addEventListener("click", (event) => {
-            if (!cart[data.nama]) {
-                cart[data.nama] = { ...data, qty: 0 };
-            }
-            cart[data.nama].qty++;
-            const sisaStock = data.stock - cart[data.nama].qty;
+        const elementAdd = document.getElementById(`product-add-${data.nama}`);
+        const elementBuy = document.getElementById(`product-buy-${data.nama}`);
+
+        if (elementAdd) elementAdd.addEventListener("click", () => {
+            const sisaStock = addToCart(data);
             if (sisaStock < 0) {
-                alert("Out of stock!");
-                cart[data.nama].qty--;
+                alert("Maaf, barang " + randomOutOfStockLine());
                 return;
             }
+
             const description = document.getElementById(`product-desc-${data.nama}`);
             if (description) description.innerText = `Stok: ${sisaStock}`;
         });
-    }
-}
 
-const loadInvoiceButtonListeners = () => {
-    const buyButtons = document.getElementsByClassName("product-buy");
-    for (const button of buyButtons) {
-        button.addEventListener("click", () => {
+        if (elementBuy) elementBuy.addEventListener("click", () => {
+            const cartData = cart[data.nama];
+            if (!cartData) {
+                if (addToCart(data) < 0) {
+                    alert("Maaf, barang " + randomOutOfStockLine());
+                    return;
+                }
+            }
+
             goToPage("/invoice.html");
         });
     }
 }
 
+// const loadInvoiceButtonListeners = () => {
+//     const buyButtons = document.getElementsByClassName("product-buy");
+//     for (const button of buyButtons) {
+//         button.addEventListener("click", () => {
+//             goToPage("/invoice.html");
+//         });
+//     }
+// }
+
 const search = () => {
     const elementSearch = document.getElementById("text-input-search-products");
     if (elementSearch.value) {
         const filter = products.filter(product => product.nama.toLowerCase().includes(elementSearch.value.toLowerCase()));
+
+        if (!filter.length) {
+            alert("Maaf, barang yang anda cari " + randomOutOfStockLine());
+            return;
+        }
 
         showProducts(filter);
         loadProductsListener(filter);
@@ -507,7 +587,7 @@ const search = () => {
         showProducts(products);
         loadProductsListener(products);
     }
-    loadInvoiceButtonListeners();
+    // loadInvoiceButtonListeners();
 }
 
 parseUrlParam();
@@ -560,7 +640,7 @@ if (invoiceNavButton) invoiceNavButton.addEventListener("click", () => {
 if (window.location.pathname.startsWith("/")) {
     showProducts(products);
     loadProductsListener(products);
-    loadInvoiceButtonListeners();
+    // loadInvoiceButtonListeners();
 }
 
 const buttonSearch = document.getElementById("button-search-products");
@@ -572,9 +652,18 @@ if (invoiceUserCreds) {
     setInvoiceTable();
 }
 
-const buttonPay = document.getElementById("");
+const buttonPay = document.getElementById("button-pay-cart");
 if (buttonPay) buttonPay.addEventListener("click", () => {
-    alert("Terimakasih telah berbelanja di BelanjaCuan <3");
-    cart = {};
+    if (!Object.keys(cart).length) {
+        alert("Mau beli apa nih? Pilih-pilih dulu yuk!");
+    } else {
+        alert("Terimakasih telah berbelanja di BelanjaCuan <3");
+        cart = {};
+    }
+    goToPage("/");
+});
+
+const elementALogo = document.getElementById("a-logo");
+if (elementALogo) elementALogo.addEventListener("click", () => {
     goToPage("/");
 });

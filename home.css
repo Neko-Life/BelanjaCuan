@@ -47,7 +47,8 @@ nav ul li a {
 }
 
 a.active,
-a:hover {
+a:hover:not(.no-trans),
+#button-search-products:hover {
     background: #492d10cc;
     transition: .5s;
 }
@@ -183,6 +184,7 @@ button.product-add {
 
 button.product-add:hover {
     background: #0d871a;
+    transition: .5s;
 }
 
 button.product-buy {
@@ -191,6 +193,7 @@ button.product-buy {
 
 button.product-buy:hover {
     background: #118d1e;
+    transition: .5s;
 }
 
 .footer {

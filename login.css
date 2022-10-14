@@ -42,8 +42,8 @@ nav ul li a {
 }
 
 a.active,
-a:hover {
-    background: #dbd0cd;
+a:hover:not(.no-trans) {
+    background: #492d10cc;
     transition: .5s;
 }
 
@@ -127,6 +127,7 @@ a:hover {
     position: sticky;
 }
 
-.login-box a:hover {
+.login-box a:hover:not(.no-trans) {
     color: #fff;
+    transition: .5s;
 }
