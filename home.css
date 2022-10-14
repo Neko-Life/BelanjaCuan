@@ -48,7 +48,7 @@ nav ul li a {
 
 a.active,
 a:hover {
-    background: #dec2ba;
+    background: #492d10cc;
     transition: .5s;
 }
 
@@ -141,11 +141,11 @@ div.product-cell {
     border: 1px solid #ddd;
     background: #f2f2f2;
     border-radius: 5px;
+    text-align: center;
 }
 
 img.product-img {
-    width: 100%;
-    height: auto;
+    height: 250px;
 }
 
 div.product-name {
@@ -174,22 +174,23 @@ button.product-add {
     font-weight: bold;
     cursor: pointer;
     border-radius: 3px;
+    margin-top: 10px;
 }
 
 button.product-add {
-    background: #1bcb00;
+    background: #492d10cc;
 }
 
 button.product-add:hover {
-    background: #51ff36;
+    background: #0d871a;
 }
 
 button.product-buy {
-    background: #dec2ba;
+    background: #492d10cc;
 }
 
 button.product-buy:hover {
-    background: #dbd0cd;
+    background: #118d1e;
 }
 
 .footer {
