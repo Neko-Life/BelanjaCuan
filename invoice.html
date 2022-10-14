@@ -40,15 +40,15 @@
             <th>Product</th>
             <th>pcs</th>
             <th>Harga</th>
-            <th>total harga</th>
+            <th>Total Harga</th>
             <tfoot>
                 <tr>
-                    <td colspan="3">Total</td>
-                    <td>Rp 500.000</td>
+                    <td id="td-total-price" colspan="3">Total</td>
+                    <td>Rp. <span id="td-span-total-price">-</span></td>
                 </tr>
             </tfoot>
-            <tbody>
-                <tr>
+            <tbody id="invoice-table-body">
+                <!-- <tr>
                     <td>Kaos polos Hitam</td>
                     <td>10</td>
                     <td>25000</td>
@@ -60,7 +60,7 @@
                     <td>10</td>
                     <td>25000</td>
                     <td>Rp 250.000</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
         <div>
@@ -69,9 +69,9 @@
             </div>
             <div class="totalpembayaran">
                 <pre class="totalharga" id="invoice-total-price">
-    total  harga        : Rp 500.000
-    ppn10%              : <u>Rp  50.000</u>
-    total pembayaran    : Rp 550.000
+    Total Harga         : Rp. <span id="invoice-total-price-total-price">-</span>
+    PPN10%              : Rp. <span id="invoice-total-price-ppn">-</span>
+    Total Pembayaran    : Rp. <span id="invoice-total-price-total-pay">-</span>
                 </pre>
             </div>
         </div>

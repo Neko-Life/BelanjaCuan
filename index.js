@@ -207,13 +207,11 @@ const createUrlParam = (url) => {
         users.push(user);
     }
 
-    console.log(users);
     if (users.length) {
         url.searchParams.set("users", JSON.stringify(users));
     }
 
     const user = getCurrentUser();
-    console.log(user);
     if (user) url.searchParams.set("user", user.username);
 
     return url;
@@ -224,7 +222,6 @@ const parseUrlParam = () => {
     const keys = [...searchData.keys()];
     const values = [...searchData.values()];
 
-    console.log(values);
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const value = values[i];
@@ -286,10 +283,10 @@ const revertRedBorder1px = (element) => {
     element.style.setProperty("border", "initial");
 }
 
-const createProductCard = ({ nama, harga, namagambar, stock } = {}) => {
+const stringifyHarga = (str) => {
     let hargaStr = "";
 
-    const strHarga = harga.toString();
+    const strHarga = str.toString();
 
     for (let i = (strHarga.length - 1); i >= 0; i -= 3) {
         let brek = false;
@@ -306,10 +303,16 @@ const createProductCard = ({ nama, harga, namagambar, stock } = {}) => {
             break;
         }
 
-        if (j > 0) {
+        if (j >= 0) {
             hargaStr = "." + hargaStr;
         }
     }
+
+    return hargaStr;
+}
+
+const createProductCard = ({ nama, harga, namagambar, stock } = {}) => {
+    const hargaStr = stringifyHarga(harga);
 
     if (cart[nama]?.qty) {
         stock -= cart[nama].qty;
@@ -395,43 +398,38 @@ const logOut = () => {
 
 const setInvoiceUserCreds = (element) => {
     const user = getCurrentUser();
+    const date = new Date();
     element.innerHTML = `
     Nama                      : ${user.username}
-    Password                  : ${user.password}
+    Tanggal                   : ${date.toDateString()}, ${date.toTimeString()}
     `;
 }
 
 const setInvoiceTable = () => {
-    const table = document.getElementById("");
+    const listItems = document.getElementById("invoice-table-body");
+    const spanTotalPrice = document.getElementById("td-span-total-price");
 
-    if (table) {
+    let total = 0;
+    if (listItems) {
+        for (const key in cart) {
+            const data = cart[key];
 
-        // <th>Product</th>
-        // <th>pcs</th>
-        // <th>Harga</th>
-        // <th>total harga</th>
-        // <tfoot>
-        //     <tr>
-        //         <td colspan="3">Total</td>
-        //         <td>Rp 500.000</td>
-        //     </tr>
-        // </tfoot>
-        // <tbody>
-        //     <tr>
-        //         <td>Kaos polos Hitam</td>
-        //         <td>10</td>
-        //         <td>25000</td>
-        //         <td>Rp 250.000</td>
-        //     </tr>
-
-        //     <tr>
-        //         <td>Kaos polos Putih</td>
-        //         <td>10</td>
-        //         <td>25000</td>
-        //         <td>Rp 250.000</td>
-        //     </tr>
-        // </tbody>
+            const tr = document.createElement("tr");
+            // <td>Kaos polos Hitam</td>
+            // <td>10</td>
+            // <td>25000</td>
+            // <td>Rp 250.000</td>
+            const currentTotal = data.harga * data.qty;
+            tr.innerHTML = `<td class="text-align-left">${data.nama}</td>
+                        <td class="text-align-right">${data.qty}</td>
+                        <td class="text-align-right">${stringifyHarga(data.harga)}</td>
+                        <td class="text-align-right">Rp. ${stringifyHarga(currentTotal)}</td>`;
+            listItems.appendChild(tr);
+            total += currentTotal;
+        }
     }
+
+    spanTotalPrice.innerText = stringifyHarga(total);
 }
 
 const showProducts = (productsToShow) => {
@@ -560,4 +558,7 @@ const buttonSearch = document.getElementById("button-search-products");
 if (buttonSearch) buttonSearch.addEventListener("click", search);
 
 const invoiceUserCreds = document.getElementById("user-creds");
-if (invoiceUserCreds) setInvoiceUserCreds(invoiceUserCreds);
+if (invoiceUserCreds) {
+    setInvoiceUserCreds(invoiceUserCreds);
+    setInvoiceTable();
+}
