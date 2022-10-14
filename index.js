@@ -407,10 +407,14 @@ const setInvoiceUserCreds = (element) => {
 
 const setInvoiceTable = () => {
     const listItems = document.getElementById("invoice-table-body");
-    const spanTotalPrice = document.getElementById("td-span-total-price");
+    const spanTotalPrice = document.getElementById("invoice-total-price-total-price");
+    const elementPpn = document.getElementById("invoice-total-price-ppn");
+    const elementTotalPay = document.getElementById("invoice-total-price-total-pay");
+    const elementPay = document.getElementById("span-all-total-price");
 
-    let total = 0;
     if (listItems) {
+        let total = 0;
+
         for (const key in cart) {
             const data = cart[key];
 
@@ -421,15 +425,20 @@ const setInvoiceTable = () => {
             // <td>Rp 250.000</td>
             const currentTotal = data.harga * data.qty;
             tr.innerHTML = `<td class="text-align-left">${data.nama}</td>
-                        <td class="text-align-right">${data.qty}</td>
+                        <td class="text-align-right" id="">${data.qty}</td>
                         <td class="text-align-right">${stringifyHarga(data.harga)}</td>
                         <td class="text-align-right">Rp. ${stringifyHarga(currentTotal)}</td>`;
             listItems.appendChild(tr);
             total += currentTotal;
         }
-    }
 
-    spanTotalPrice.innerText = stringifyHarga(total);
+        const ppn = total * 0.1;
+        const totalPay = total + ppn;
+        spanTotalPrice.innerText = stringifyHarga(total);
+        elementPpn.innerText = stringifyHarga(ppn);
+        elementTotalPay.innerText = stringifyHarga(totalPay);
+        elementPay.innerText = totalPay;
+    }
 }
 
 const showProducts = (productsToShow) => {
@@ -562,3 +571,10 @@ if (invoiceUserCreds) {
     setInvoiceUserCreds(invoiceUserCreds);
     setInvoiceTable();
 }
+
+const buttonPay = document.getElementById("");
+if (buttonPay) buttonPay.addEventListener("click", () => {
+    alert("Terimakasih telah berbelanja di BelanjaCuan <3");
+    cart = {};
+    goToPage("/");
+});
