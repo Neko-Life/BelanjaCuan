@@ -468,6 +468,7 @@ const setInvoiceTable = () => {
 
             const inputQtyHandler = (event) => {
                 cart[data.nama].qty = event.target.value;
+                setInvoiceTable();
             };
 
             const elementInputQty = document.getElementById(`input-qty-${data.nama}`);
